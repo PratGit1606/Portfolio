@@ -363,7 +363,7 @@ function FunFactCarousel() {
         Fun Fact
       </p>
 
-      <div className="relative h-auto min-h-[3.5rem]">
+      <div className="relative h-auto min-h-[3rem] sm:min-h-[3.5rem] md:min-h-[4rem]">
         <AnimatePresence mode="wait">
           <motion.p
             key={facts[index]}
@@ -398,11 +398,8 @@ export default function About() {
           Get to know me a bit?
         </motion.h2>
 
-        {/* New Layout Structure */}
         <div className="mx-auto max-w-6xl space-y-8 relative z-10">
-          {/* Top Row - Two Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left Card - About Me and Profile Scan */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}

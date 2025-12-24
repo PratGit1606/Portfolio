@@ -73,11 +73,10 @@ export default function Navbar() {
                   href={item.href}
                   aria-label={item.label}
                   onClick={(e) => handleScroll(e, item.href)}
-                  className={`group flex h-10 w-10 items-center justify-center rounded-md transition-colors ${
-                    isActive
+                  className={`group flex h-10 w-10 items-center justify-center rounded-md transition-colors ${isActive
                       ? "text-[#F5C518]"
                       : "text-gray-400 hover:text-[#F5C518]"
-                  }`}
+                    }`}
                 >
                   <Icon className="h-6 w-auto" />
                 </Link>
@@ -153,18 +152,29 @@ export default function Navbar() {
             </div>
 
             <div className="mt-10 pt-6 border-t border-[#2A2E37] flex flex-col gap-4">
-              <Button
-                variant="outline"
-                className="border-[#2A2E37] bg-[#12151B] text-gray-200 hover:bg-[#F5C518] hover:text-black"
+              <Link href="/contact" target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#2A2E37] bg-[#12151B] text-md text-gray-200 hover:bg-[#F5C518] hover:text-black"
+                >
+                  Contact
+                </Button>
+              </Link>
+
+              <Link
+                href="https://drive.google.com/file/d/1gvywaYJ6jySQMIgbgae8dRlgvTAaMqtF/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Contact
-              </Button>
-              <Button
-                variant="outline"
-                className="border-[#2A2E37] bg-[#12151B] text-gray-200 hover:bg-[#F5C518] hover:text-black"
-              >
-                Resume
-              </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#2A2E37] bg-[#12151B] text-md text-gray-200 hover:bg-[#F5C518] hover:text-black"
+                >
+                  Resume
+                </Button>
+              </Link>
             </div>
           </SheetContent>
         </Sheet>

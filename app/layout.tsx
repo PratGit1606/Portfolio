@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import { Metadata } from 'next';
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: 'Pratham Hegde',
@@ -19,6 +20,7 @@ export default function RootLayout({
         <main className="md:ml-34">
           {children}
         </main>
+        <Analytics />
       </body>
     </html>
   );
