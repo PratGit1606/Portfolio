@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 import { Shield, Search, Lock, Unlock, Terminal } from "lucide-react";
 const facts = [
   "I practice more than 5 forms of martial arts",
