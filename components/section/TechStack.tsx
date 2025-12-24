@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 const TechStack = () => {
-  const [hoveredCard, setHoveredCard] = useState(null);
-
+const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const techCategories = [
     {
       title: 'Languages',

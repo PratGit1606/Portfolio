@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { ChevronDown, Terminal, Lock, Code, Cpu, Users, Award } from 'lucide-react';
 
 const Experiences = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState('professional');
+
+  const backgroundCode = useState(() =>
+    Array.from({ length: 50 }, () => '> ' + Math.random().toString(36).substring(2, 15))
+  )[0];
 
   const professionalExperiences = [
     {
@@ -189,23 +193,23 @@ const Experiences = () => {
 
   const experiences = activeTab === 'professional' ? professionalExperiences : leadershipExperiences;
 
-  const toggleExpand = (index) => {
+  const toggleExpand = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
     <section id="experience" className="bg-black text-white py-20 px-6 md:px-12 relative overflow-hidden">
-      
+
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 text-[#F5C518] font-mono text-xs">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div key={i}>{'> ' + Math.random().toString(36).substring(2, 15)}</div>
+          {backgroundCode.map((code, i) => (
+            <div key={i}>{code}</div>
           ))}
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        
+
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-2">
             <Terminal className="w-8 h-8 text-[#F5C518]" />
@@ -221,11 +225,10 @@ const Experiences = () => {
                 setActiveTab('professional');
                 setActiveIndex(null);
               }}
-              className={`px-6 py-3 text-sm font-mono border transition-all duration-300 ${
-                activeTab === 'professional'
-                  ? 'bg-[#F5C518] text-black border-[#F5C518]'
-                  : 'bg-transparent text-gray-400 border-gray-700 hover:border-[#F5C518]/50 hover:text-white'
-              }`}
+              className={`px-6 py-3 text-sm font-mono border transition-all duration-300 ${activeTab === 'professional'
+                ? 'bg-[#F5C518] text-black border-[#F5C518]'
+                : 'bg-transparent text-gray-400 border-gray-700 hover:border-[#F5C518]/50 hover:text-white'
+                }`}
             >
               <span className="mr-2">&gt;</span>PROFESSIONAL
             </button>
@@ -234,11 +237,10 @@ const Experiences = () => {
                 setActiveTab('leadership');
                 setActiveIndex(null);
               }}
-              className={`px-6 py-3 text-sm font-mono border transition-all duration-300 ${
-                activeTab === 'leadership'
-                  ? 'bg-[#F5C518] text-black border-[#F5C518]'
-                  : 'bg-transparent text-gray-400 border-gray-700 hover:border-[#F5C518]/50 hover:text-white'
-              }`}
+              className={`px-6 py-3 text-sm font-mono border transition-all duration-300 ${activeTab === 'leadership'
+                ? 'bg-[#F5C518] text-black border-[#F5C518]'
+                : 'bg-transparent text-gray-400 border-gray-700 hover:border-[#F5C518]/50 hover:text-white'
+                }`}
             >
               <span className="mr-2">&gt;</span>LEADERSHIP
             </button>
@@ -246,7 +248,7 @@ const Experiences = () => {
         </div>
 
         <div className="relative">
-          
+
           <div className="absolute left-0 md:left-8 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#F5C518] via-[#F5C518]/50 to-[#F5C518]/20"></div>
 
           <div className="space-y-8">
@@ -254,7 +256,7 @@ const Experiences = () => {
               const Icon = exp.icon;
               const isActive = activeIndex === index;
               const isHovered = hoveredIndex === index;
-              
+
               return (
                 <div
                   key={index}
@@ -262,34 +264,30 @@ const Experiences = () => {
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  
-                  <div className={`absolute left-[-8px] md:left-[24px] top-2 transition-all duration-300 ${
-                    isHovered || isActive ? 'scale-125' : 'scale-100'
-                  }`}>
+
+                  <div className={`absolute left-[-8px] md:left-[24px] top-2 transition-all duration-300 ${isHovered || isActive ? 'scale-125' : 'scale-100'
+                    }`}>
                     <div className="relative">
                       <div className={`w-4 h-4 bg-[#F5C518] rotate-45`}></div>
                     </div>
                   </div>
 
-                  <div 
-                    className={`border border-gray-800 bg-[#0a0a0a] p-6 cursor-pointer transition-all duration-300 ${
-                      isHovered ? 'border-[#F5C518]/50 shadow-lg shadow-[#F5C518]/10 transform -translate-y-1' : ''
-                    }`}
+                  <div
+                    className={`border border-gray-800 bg-[#0a0a0a] p-6 cursor-pointer transition-all duration-300 ${isHovered ? 'border-[#F5C518]/50 shadow-lg shadow-[#F5C518]/10 transform -translate-y-1' : ''
+                      }`}
                     onClick={() => toggleExpand(index)}
                   >
-                    
+
                     <div className="flex items-start gap-4 mb-3">
-                      <div className={`p-2 border transition-colors duration-300 ${
-                        isHovered ? 'border-[#F5C518] bg-[#F5C518]/10' : 'border-gray-800 bg-black'
-                      }`}>
+                      <div className={`p-2 border transition-colors duration-300 ${isHovered ? 'border-[#F5C518] bg-[#F5C518]/10' : 'border-gray-800 bg-black'
+                        }`}>
                         <Icon className="w-5 h-5 text-[#F5C518]" />
                       </div>
-                      
+
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-1 flex-wrap">
-                          <h3 className={`text-lg md:text-xl font-semibold transition-colors ${
-                            isHovered ? 'text-[#F5C518]' : 'text-white'
-                          }`}>
+                          <h3 className={`text-lg md:text-xl font-semibold transition-colors ${isHovered ? 'text-[#F5C518]' : 'text-white'
+                            }`}>
                             {exp.title}
                           </h3>
                         </div>
@@ -308,18 +306,16 @@ const Experiences = () => {
                         <span className="text-xs text-[#F5C518] border border-[#F5C518]/30 px-3 py-1">
                           {exp.type}
                         </span>
-                        <ChevronDown 
-                          className={`w-4 h-4 text-[#F5C518] transition-transform duration-300 ${
-                            isActive ? 'rotate-180' : ''
-                          }`}
+                        <ChevronDown
+                          className={`w-4 h-4 text-[#F5C518] transition-transform duration-300 ${isActive ? 'rotate-180' : ''
+                            }`}
                         />
                       </div>
                     </div>
 
-                    <div 
-                      className={`overflow-hidden transition-all duration-300 ${
-                        isActive ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
-                      }`}
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${isActive ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+                        }`}
                     >
                       <div className="border-l-2 border-[#F5C518]/30 pl-4 pt-2 space-y-3 bg-black/50 p-4 font-mono text-xs">
                         {exp.highlights.map((highlight, hIndex) => (

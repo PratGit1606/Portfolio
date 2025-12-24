@@ -42,18 +42,11 @@ interface Drop {
 }
 
 function MatrixRain() {
-  const [drops, setDrops] = useState<Drop[]>([]);
-  const isInitialized = useRef(false);
-
-  useEffect(() => {
-    // Only initialize once
-    if (isInitialized.current) return;
-    isInitialized.current = true;
-
+  const [drops] = useState<Drop[]>(() => {
     const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
     const columns = 15;
 
-    const initialDrops = Array.from({ length: columns }, (_, i) => ({
+    return Array.from({ length: columns }, (_, i) => ({
       id: i,
       x: (i * 100) / columns,
       delay: Math.random() * 2,
@@ -62,9 +55,7 @@ function MatrixRain() {
         chars[Math.floor(Math.random() * chars.length)]
       ),
     }));
-
-    setDrops(initialDrops);
-  }, []);
+  });
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
