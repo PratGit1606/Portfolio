@@ -24,9 +24,9 @@ import useActiveSection from "@/lib/useActiveSection";
 const navItems = [
   { label: "Home", href: "#hero", icon: Home },
   { label: "About", href: "#about", icon: User },
-  { label: "Stack", href: "#stack", icon: Layers },
   { label: "Experience", href: "#experience", icon: Briefcase },
   { label: "Projects", href: "#projects", icon: Folder },
+  { label: "Stack", href: "#stack", icon: Layers },
   { label: "Blog", href: "#blog", icon: PenTool },
 ];
 

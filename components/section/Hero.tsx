@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import CompileName from "./CompileName";
 import HeroSwipeStack from "../hero/HeroSwipeStack";
@@ -29,10 +30,16 @@ export default function Hero() {
             <p className="text-sm tracking-[0.35em] text-[#F5C518] mb-8">
               CYBERSECURITY · FULLSTACK · LEADERSHIP
             </p>
-
             <CompileName />
+            <Image
+              src="/orange.svg"
+              alt="pwn.college Orange Belt"
+              width={24}
+              height={24}
+              className="mt-4 h-6 w-auto"
+            />
 
-            <h1 className="text-4xl md:text-5xl font-semibold leading-tight text-white">
+            <h1 className="text-4xl md:text-5xl mt-4 font-semibold leading-tight text-white">
               Breaking systems
               <br />
               <span className="text-gray-400 font-normal">
@@ -40,8 +47,8 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="mt-10 max-w-2xl text-base md:text-lg text-gray-400 leading-relaxed">
-              I love to try to break into things in order to understand them.
+            <p className="mt-10 max-w-2xl text-base md:text-xl text-gray-400 leading-relaxed">
+              “If it works the first time, I get suspicious.”
             </p>
           </motion.div>
 
